@@ -22,6 +22,8 @@ services:
     container_name: 'ecom_mysql'
     image: mysql:latest
     restart: always
+    cap_add:
+      - SYS_NICE
     environment:
       MYSQL_DATABASE: '/run/secrets/mysql-password'
       MYSQL_USER: '/run/secrets/mysql-password'
@@ -35,7 +37,7 @@ services:
     expose:
       - '3307'
     volumes:
-      - ecom_db:/etc/mysql/conf.d
+      - ecom_db:/etc/mysql
 
 secrets:
   mysql-password:
