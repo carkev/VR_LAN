@@ -1,6 +1,8 @@
 """AI is creating summary for ...
 """
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
+from .models import Staff
 
 
 # Create your views here.
@@ -12,9 +14,10 @@ class IndexViewPage(TemplateView):
     template_name = 'index.html'
 
 
-class AboutPageView(TemplateView):
+class AboutPageView(ListView):
     """About page view class.
 
     :parent: TemplateView
     """
+    model = Staff
     template_name = "about.html"

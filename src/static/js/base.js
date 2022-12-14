@@ -1,2 +1,2 @@
 // static/js/base.js
-console.log("JS is running ...")
+console.log("JS is running ...");
