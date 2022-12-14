@@ -1,8 +1,237 @@
 <!-- templates/about.html -->
+
 {% extends "_base.html" %}
 
-{% block title %}About{% endblock title %}
+{% block title %} About {% endblock title %}
 
 {% block content %}
-    <h1 style="margin-top: 7%;">About Page</h1>
+    <style>
+        body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+  
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .function {
+    color: grey;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+    </style>
+
+    <h1 style="margin-top: 7%;">About</h1>      
+    <h2 style="text-align:center">Our Team</h2>
+    {% if object_list is not None %}
+    {% for staff in object_list %}
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                  <img src="{{ staff.picture }}" alt={{ staff.firstname }} style="width:100%">
+                  <div class="container">
+                    <h2>{{ staff }}</h2>
+                    <p class="function">{{ staff.function }}</p>
+                    <p></p>
+                    <a href="mailto:mael.rollin@campus.academy?subject=Sujet du message">{{ staff.email }}</a>
+                  </div>
+                </div>
+            </div> 
+        </div>
+    {% endfor %}
+    {% endif %}
+    {% comment %}
+    <!--CEO------------------------------------->
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="" alt="Maël" style="width:100%">
+            <div class="container">
+              <h2>Ma&euml;l ROLLIN</h2>
+              <p class="function">CEO & Founder</p>
+              <a href="mailto:mael.rollin@campus.academy?subject=Sujet du message">mael.rollin@campus.academy</a>
+            </div>
+          </div>
+        </div>
+      <!--  i18n("About") -->
+        <div class="column">
+          <div class="card">
+            <img src="" alt="Léa" style="width:100%">
+            <div class="container">
+              <h2>L&eacute;a DIFFALLAH</h2>
+              <p class="function">Art Director</p>
+              <a href="mailto:lea.diffalah@campus.academy?subject=Sujet du message">lea.diffalah@campus.academy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+              <img src="" alt="Léo" style="width:100%">
+              <div class="container">
+                <h2>L&eacute;o LERCLERC</h2>
+                <p class="function">Designer</p>
+                <a href="mailto:leo.leclerc@campus.academy?subject=Sujet du message">leo.leclerc@campus.academy</a>
+              </div>
+            </div>
+          </div>
+      
+      </div>
+    <!-- DEV ------------------------------------->
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="" alt="Mathias" style="width:100%">
+            <div class="container">
+              <h2>Mathias GUERIN</h2>
+              <p class="function">CEO & Founder</p>
+              <p></p>
+              <a href="mailto:mathias.guerin@campus.academy?subject=Sujet du message">mathias.guerin@campus.academy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+              <img src="" alt="Kevin" style="width:100%">
+              <div class="container">
+                <h2>K&eacute;vin CARILLO</h2>
+                <p class="function">CEO & Founder</p>
+                <p></p>
+                <a href="mailto:kevin.carillo@campus.academy?subject=Sujet du message">kevin.carillo@campus.academy</a>
+              </div>
+            </div>
+          </div>
+        <!--  i18n("About") -->
+          <div class="column">
+            <div class="card">
+              <img src="" alt="Jonas" style="width:100%">
+              <div class="container">
+                <h2>Jonas TROCHET</h2>
+                <p class="function">Art Director</p>
+                <a href="mailto:jonas.trochet@campus.academy?subject=Sujet du message">jonas.trochet@campus.academy</a>
+              </div>
+            </div>
+          </div>
+         </div> 
+
+     <!-- DESIGN------------------------------------->
+
+      <div class="row">     
+        <div class="column">
+            <div class="card">
+              <img src="" alt="Marius" style="width:100%">
+              <div class="container">
+                <h2>Marius VAILLANT</h2>
+                <p class="function">Designer</p>
+                <a href="mailto:marius.vaillant@campus.academy?subject=Sujet du message">marius.vaillant@campus.academy</a>
+              </div>
+            </div>
+          </div>
+       
+        <div class="column">
+            <div class="card">
+              <img src="" alt="Raphaël" style="width:100%">
+              <div class="container">
+                <h2>Rapha&euml;l ALLAIRE</h2>
+                <p class="function">Art Director</p>
+                <a href="mailto:raphael.allaire@campus.academy?subject=Sujet du message">raphael.allaire@campus.academy</a>
+              </div>
+            </div>
+          </div>        
+        <div class="column">
+            <div class="card">
+              <img src="" alt="Julie" style="width:100%">
+              <div class="container">
+                <h2>Julie MARSAIS</h2>
+                <p class="function">Designer</p>
+                <a href="mailto:julie.marsais@campus.academy?subject=Sujet du message">julie.marsais@campus.academy</a>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="row">      
+
+          <div class="column">
+            <div class="card">
+              <img src="" alt="PAM" style="width:100%">
+              <div class="container">
+                <h2>Pierre-Andr&eacute; MARIE</h2>
+                <p class="function">Designer</p>
+                <a href="mailto:pierre-andre.marie@campus.academy?subject=Sujet du message">pierre-andre.marie@campus.academy</a>
+              </div>
+            </div>
+          </div>
+        <div class="column">
+            <div class="card">
+              <img src="" alt="Laura" style="width:100%">
+              <div class="container">
+                <h2>Laura BOSCHAT</h2>
+                <p class="function">CEO & Founder</p>
+                <p></p>
+                <a href="mailto:laura.boschat@campus.academy?subject=Sujet du message">laura.boschat@campus.academy</a>
+              </div>
+            </div>
+          </div>
+        <!--  i18n("About") -->
+          <div class="column">
+            <div class="card">
+              <img src="" alt="Sarah" style="width:100%">
+              <div class="container">
+                <h2>Sarah JAMMET</h2>
+                <p class="function">Art Director</p>
+                <a href="mailto:sarah.jammet@campus.academy?subject=Sujet du message">sarah.jammet@campus.academy</a>
+              </div>
+            </div>
+          </div>
+    </div>
+    {% endcomment %}
+
+
+    <!-- 
+    -->
+
 {% endblock content %}
