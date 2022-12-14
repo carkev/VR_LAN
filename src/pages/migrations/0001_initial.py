@@ -13,27 +13,21 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Function',
+            name='StaffRole',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('function', models.CharField(max_length=50)),
+                ('name', models.CharField(max_length=50)),
             ],
-            options={
-                'db_table': 'function',
-            },
         ),
         migrations.CreateModel(
             name='Staff',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('firstname', models.CharField(max_length=30, verbose_name='Prénom')),
-                ('lastname', models.CharField(max_length=40, verbose_name='Nom')),
-                ('email', models.EmailField(max_length=254, null=True, verbose_name='Email')),
-                ('picture', models.ImageField(upload_to='', verbose_name='Photo')),
-                ('function', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.function')),
+                ('firstname', models.CharField(max_length=30)),
+                ('lastname', models.CharField(max_length=50)),
+                ('mail', models.EmailField(max_length=254)),
+                ('picture', models.ImageField(upload_to='')),
+                ('staff_role', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pages.staffrole')),
             ],
-            options={
-                'db_table': 'staff',
-            },
         ),
     ]

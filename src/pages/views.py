@@ -1,8 +1,8 @@
 """AI is creating summary for ...
 """
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
 from .models import Staff
-from django.views.generic import ListView
 
 
 # Create your views here.
