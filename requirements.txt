@@ -25,7 +25,6 @@ django-otp==1.1.4
 django-sphinxdoc==2.0.0
 django-yaa-settings==1.1.0
 django_debug_toolbar==3.8.1
-environs==9.5.0
 idna==3.4
 marshmallow==3.19.0
 mysqlclient==2.1.1

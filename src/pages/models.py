@@ -21,3 +21,7 @@ class Staff(models.Model):
 
     def __str__(self):
         return self.firstname + ' ' + self.lastname
+
+
+    class PrivacyMeta:
+        fields = ['username', 'email']

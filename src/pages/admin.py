@@ -1,6 +1,7 @@
 """...
 """
 from django.contrib import admin
+import gdpr_assist
 
 from .models import Staff, StaffRole
 
@@ -13,7 +14,7 @@ class StaffRoleAdmin(admin.ModelAdmin):
     list_display_links = ["name"]
 
 
-class StaffAdmin(admin.ModelAdmin):
+class StaffAdmin(gdpr_assist.admin.ModelAdmin):
     """...
     """
     list_display = ["firstname", "lastname", "mail", "picture", "staff_role"]
