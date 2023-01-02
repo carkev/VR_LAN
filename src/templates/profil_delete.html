@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+{%block content%}
+<div class="center">
+	<form method="post" class="card">
+		{% csrf_token %}
+		<h2>Supprimer profil</h2>
+		<p> Êtes-vous sûr vouloir supprimer votre profil ?</p>
+		<p class="form-buttons">
+			<a href="{% url 'index' %}" class="btn btn-danger">Supprimer</a>
+		</p>
+	</form>
+</div>
+
+{%endblock content%}

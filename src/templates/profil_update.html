@@ -1,0 +1,21 @@
+<!-- templates/profil_update.html -->
+
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}
+MAJ profil
+{% endblock title %}
+
+{% block content %}
+    <h1>Mon  profil : {{user.username}}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Modifier</button>
+    </form>
+
+    
+
+
+{% endblock content %}

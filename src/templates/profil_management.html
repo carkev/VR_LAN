@@ -1,0 +1,31 @@
+<!-- templates/profilManagement.html -->
+
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}
+Mon Profil
+{% endblock title %}
+
+{% block content %}
+    <h1>Mon  profil : {{user.username}}</h1>
+    <!-- <div class="champ">
+        <form method="post">
+            <input id="username" type="text" placeholder="username" name="Username" >
+            <input id="email" type="text" placeholder="email" name="Email"> 
+            <button type="submit" id="submit">Modifier</button>
+        </form>
+    </div>
+    -->
+
+    <p> <span class="bold">Username :</span> {{user.username}} </p>
+    <p> <span class="bold">Email :</span> {{user.email}} </p>
+    <a href="{% url 'user_update' user.pk %}">Modifier mes informations</a>
+    <a href="{% url 'user_delete' user.pk %}">Supprimer mon compte</a>
+
+
+
+
+
+
+{% endblock content %}

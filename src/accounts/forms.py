@@ -27,3 +27,13 @@ class CustomUserChangeForm(UserChangeForm):
         """
         model = get_user_model()
         fields = ('email', 'username', )
+
+class EditProfileForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields = (
+            'username',
+            'email',
+            'password',
+        )
+
