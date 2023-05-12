@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: 'ecom_web'
+    build: .
+    environment:
+      DJANGO_SECRET_KEY: '/run/secrets/web-secret'
+      DEBUG: '/run/secrets/web-secret'
+      MYSQL_HOST: '/run/secrets/web-secret'
+      MYSQL_DATABASE: '/run/secrets/web-secret'
+      MYSQL_USER: '/run/secrets/web-secret'
+      MYSQL_PASSWORD: '/run/secrets/web-secret'
+    command: python /src/ecommerce/src/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/src/ecommerce/
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    container_name: 'ecom_mysql'
+    image: mysql:latest
+    restart: always
+    cap_add:
+      - SYS_NICE
+    environment:
+      MYSQL_DATABASE: '/run/secrets/mysql-password'
+      MYSQL_USER: '/run/secrets/mysql-password'
+      MYSQL_PASSWORD: '/run/secrets/mysql-password'
+      MYSQL_ROOT_PASSWORD: '/run/secrets/mysql-password'
+    secrets:
+      - mysql-password
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3307:3306'
+    expose:
+      - '3307'
+    volumes:
+      - ecom_db:/etc/mysql
+
+secrets:
+  mysql-password:
+    file: ./src/config/.env_db
+  web_secret:
+    file: ./src/config/.env
+
+volumes:
+  ecom_db:
